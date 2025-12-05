@@ -11,6 +11,7 @@ async function run(): Promise<void> {
   const quiet: boolean = core.getBooleanInput('quiet')
   const filenames = core.getInput('filenames')
   const expand: boolean = core.getBooleanInput('expand')
+  const mask: boolean = core.getBooleanInput('mask')
 
   const fullDirectory = path.resolve(inputPath)
   let mergedObject: DotenvParseOutput = {}
@@ -72,6 +73,9 @@ async function run(): Promise<void> {
   for (const entry of Object.entries(mergedObject)) {
     if (!quiet) {
       core.info(`${entry[0]} = ${entry[1]}`)
+    }
+    if (mask) {
+      core.setSecret(entry[1])
     }
     core.exportVariable(entry[0], entry[1])
   }

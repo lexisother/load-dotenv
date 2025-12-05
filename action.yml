@@ -33,6 +33,11 @@ inputs:
       If true, expand variables in the .env file.
       For example, if the .env file contains `FOO=bar` and `BAR=$FOO`, the value of `BAR` will be `bar`.
     default: 'false'
+  mask:
+    required: false
+    description: >
+      If true, masks the variables in the logs. (***)
+    default: 'false'
 runs:
   using: 'node20'
   main: 'dist/index.js'

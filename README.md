@@ -35,6 +35,10 @@ This action allows reading environment variables from a `.env` file.
     # contains `FOO=bar` and `BAR=$FOO`, the value of `BAR` will be `bar`.
     # Default: false
     expand: ''
+
+    # If true, masks the variables in the logs. (***)
+    # Default: false
+    mask: ''
 ```
 <!-- end usage -->
 
